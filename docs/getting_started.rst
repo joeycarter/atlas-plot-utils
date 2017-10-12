@@ -158,7 +158,7 @@ Set the ATLAS Style for plotting:
 
 Add the "*ATLAS* Internal" label to a plot:
 
-    >>> from atlasplots import atlas_style as astyle
-    >>> astyle.ATLASLabel(0.2, 0.87, "Internal")
+>>> from atlasplots import atlas_style as astyle
+>>> astyle.ATLASLabel(0.2, 0.87, "Internal")
 
 For a collection of complete examples, see the :ref:`examples` section.
