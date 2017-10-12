@@ -66,13 +66,13 @@ PyROOT
 Using PyROOT is super easy.
 As an example, consider opening a TBrowser:
 
-    >>> import ROOT
-    >>> br = ROOT.TBrowser()
+>>> import ROOT
+>>> br = ROOT.TBrowser()
 
 Or if you prefer, you can import ROOT classes directly:
 
-    >>> from ROOT import TBrowser
-    >>> br = TBrowser()
+>>> from ROOT import TBrowser
+>>> br = TBrowser()
 
 .. note::
 
@@ -80,24 +80,24 @@ Or if you prefer, you can import ROOT classes directly:
 
 To illustrate the power and simplicity of PyROOT, consider opening a ROOT file ``data_file.root`` containing a TTree called ``data_tree``:
 
-    >>> import ROOT
-    >>> file = ROOT.TFile("data_file.root")
-    >>> tree = file.data_tree
-    >>> tree.Print()
-    ******************************************************************************
-    *Tree    :data_tree : Test ROOT tree                                         *
-    *Entries :     3524 : Total =         2104055 bytes  File  Size =     196761 *
-    *        :          : Tree compression factor =  10.76                       *
-    ******************************************************************************
-    *Br    0 :eta       : eta/D                                                  *
-    *Entries :     3524 : Total  Size=     542582 bytes  File Size  =      49459 *
-    *Baskets :       18 : Basket Size=      32000 bytes  Compression=  10.96     *
-    *............................................................................*
-    *Br    1 :phi       : phi/D                                                  *
-    *Entries :     3524 : Total  Size=     542582 bytes  File Size  =      49459 *
-    *Baskets :       18 : Basket Size=      32000 bytes  Compression=  10.96     *
-    *............................................................................*
-    ...
+>>> import ROOT
+>>> file = ROOT.TFile("data_file.root")
+>>> tree = file.data_tree
+>>> tree.Print()
+******************************************************************************
+*Tree    :data_tree : Test ROOT tree                                         *
+*Entries :     3524 : Total =         2104055 bytes  File  Size =     196761 *
+*        :          : Tree compression factor =  10.76                       *
+******************************************************************************
+*Br    0 :eta       : eta/D                                                  *
+*Entries :     3524 : Total  Size=     542582 bytes  File Size  =      49459 *
+*Baskets :       18 : Basket Size=      32000 bytes  Compression=  10.96     *
+*............................................................................*
+*Br    1 :phi       : phi/D                                                  *
+*Entries :     3524 : Total  Size=     542582 bytes  File Size  =      49459 *
+*Baskets :       18 : Basket Size=      32000 bytes  Compression=  10.96     *
+*............................................................................*
+...
 
 As a complete example, suppose you want to print all the values in the ``eta`` branch:
 
@@ -149,12 +149,12 @@ Basic Usage
 
 Import the **atlasplots** package:
 
-    >>> import atlasplots
+>>> import atlasplots
 
 Set the ATLAS Style for plotting:
 
-    >>> from atlasplots import atlas_style as astyle
-    >>> astyle.SetAtlasStyle()
+>>> from atlasplots import atlas_style as astyle
+>>> astyle.SetAtlasStyle()
 
 Add the "*ATLAS* Internal" label to a plot:
 
