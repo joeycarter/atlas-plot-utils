@@ -2,7 +2,7 @@ ATLAS Plots
 ===========
 
 .. image:: https://img.shields.io/github/license/mashape/apistatus.svg
-    :target: https://github.com/joeycarter/atlasplots/blob/master/LICENSE
+    :target: https://github.com/joeycarter/atlas-plots/blob/master/LICENSE
 
 A collection of utility functions and style settings for making pretty plots with PyROOT for the ATLAS Experiment at CERN.
 
@@ -26,4 +26,4 @@ To uninstall:
 Documentation
 -------------
 
-The full documentation is available over at https://atlas-plots.readthedocs.io
+The full documentation is available over at https://atlas-plots.readthedocs.io.
