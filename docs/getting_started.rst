@@ -81,7 +81,7 @@ Or if you prefer, you can import ROOT classes directly:
 To illustrate the power and simplicity of PyROOT, consider opening a ROOT file ``data_file.root`` containing a TTree called ``data_tree``:
 
 >>> import ROOT
->>> file = ROOT.TFile("data_file.root")
+>>> file = ROOT.TFile.Open("data_file.root")
 >>> tree = file.data_tree
 >>> tree.Print()
 ******************************************************************************
@@ -105,11 +105,11 @@ As a complete example, suppose you want to print all the values in the ``eta`` b
 
     import ROOT
 
-    file = ROOT.TFile("data_file.root")
+    file = ROOT.TFile.Open("data_file.root")
     tree = file.data_tree
     
-    for entry in tree.eta:
-        print(entry)
+    for entry in tree:
+        print(entry.eta)
 
 Compare this to the equivalent C++ ROOT macro:
 
