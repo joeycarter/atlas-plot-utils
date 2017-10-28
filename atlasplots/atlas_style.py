@@ -156,22 +156,10 @@ def ATLASLabel(x, y, text=None, color=1):
         Text colour (the default is 1, i.e. black).
         See https://root.cern.ch/doc/master/classTColor.html
     """
-    l = root.TLatex()  # l.SetTextAlign(12); l.SetTextSize(tsize)
+    l = root.TLatex()
     l.SetNDC()
-    l.SetTextFont(72)
     l.SetTextColor(color)
-
-    delx = 0.115 * 696 * gPad.GetWh() / (472 * gPad.GetWw())
-
-    l.DrawLatex(x, y, "ATLAS")
-
-    if text is not None:
-        p = root.TLatex()
-        p.SetNDC()
-        p.SetTextFont(42)
-        p.SetTextColor(color)
-        p.DrawLatex(x + delx, y, text)
-        # p.DrawLatex(x, y, "#sqrt{s}=900GeV")
+    l.DrawLatex(x, y, r"#bf{#it{ATLAS}} " + text)
 
 
 def ATLASLabelOld(x, y, preliminary=False, color=1):
