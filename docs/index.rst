@@ -17,6 +17,7 @@ PyROOT and **atlasplots** help make things a little easier.
 
    getting_started
    atlas_style
+   utils
    examples
 
 
