@@ -6,7 +6,7 @@ Random Histogram
 This module plots a random histogram using the ATLAS Style.
 
 .. literalinclude:: ../examples/random_hist.py
-    :lines: 11-
+    :lines: 12-
 """
 
 from __future__ import absolute_import, division, print_function
