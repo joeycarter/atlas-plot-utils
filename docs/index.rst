@@ -19,6 +19,7 @@ PyROOT and **atlasplots** help make things a little easier.
    atlas_style
    utils
    config_reader
+   slim_trees
    examples
 
 
