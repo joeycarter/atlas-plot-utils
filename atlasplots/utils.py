@@ -220,10 +220,6 @@ def SetHistogramFill(hist, color=None, style=None, alpha=1):
         hist.SetFillColorAlpha(color, alpha)
 
 
-def NormalizeHistograms(hists):
-    pass
-
-
 def FormatHistograms(hists, title="", xtitle="", ytitle="", units="",
                      max=None, min=0):
     """Format histograms and add axis labels.
@@ -300,6 +296,27 @@ def DrawHistograms(hists, options=""):
             hist.Draw(options)
         else:
             hist.Draw("same " + options)
+
+
+def NormalizeHistograms(hists, width=False):
+    """Normalize a list of histograms to unity
+
+    Parameters
+    ----------
+    hists : list
+        List of histograms (TH1)
+    width : bool, optional
+        If true, the bin contents and errors are divided by the bin width
+        (the default is False)
+    """
+    # If hists is a single value, convert to list
+    if type(hists) is not list:
+        hists = [hists]
+
+    option = "width" if width else ""
+
+    for hist in hists:
+        hist.Scale(1.0 / hist.Integral(), option)
 
 
 def GetMinimum(hists):

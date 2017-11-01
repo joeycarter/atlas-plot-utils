@@ -147,25 +147,23 @@ for plot in params['plot']:
         hists.append(hist)
 
     # Normalizes histograms to unity
-    # if doNormalize:
-    #     utils.NormalizeHistograms(hists)
+    if params['norm']:
+        utils.NormalizeHistograms(hists)
 
     # Amount to scale the y-axis to allow room for labels/legends
-    max_factor = 1.2
+    max_factor = 12 if params['logy'] else 1.2
 
     hist_min = utils.GetMinimum(hists)
     hist_max = utils.GetMaximum(hists)
 
-    doNormalize = False
-    doLogPlot = False
-
-    if doNormalize:
+    # Format histogram
+    if params['norm']:
         utils.FormatHistograms(
             hists,
             xtitle=plot['label'],
             ytitle="Normalized to unity",
             max=max_factor * hist_max,
-            min=0.5*hist_min if doLogPlot else 0
+            min=0.5*hist_min if params['logy'] else 0
         )
     else:
         utils.FormatHistograms(
@@ -173,7 +171,7 @@ for plot in params['plot']:
             xtitle=plot['label'],
             ytitle="Events",
             max=max_factor * hist_max,
-            min=0.5*hist_min + 0.0001 if doLogPlot else 0
+            min=0.5*hist_min + 0.0001 if params['logy'] else 0
         )
 
     # Build upper pad for histograms
@@ -191,9 +189,9 @@ for plot in params['plot']:
 
     # Set histogram pad's y-axis to logorithmic scale
     # TODO: y-axis lower limit cannot be 0
-    # if params['logy']:
-    #     print("Doing log y")
-    #     gPad.SetLogy()
+    if params['logy']:
+        print("Doing log y")
+        gPad.SetLogy()
 
     astyle.ATLASLabel(0.2, 0.86, "Preliminary")
     utils.DrawText(0.7, 0.85, "H #rightarrow ZZ* #rightarrow 4l", 1, 0.05)

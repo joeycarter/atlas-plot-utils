@@ -7,7 +7,7 @@ ext = "pdf"          # File extension, e.g. "pdf", "png", "jpg", etc.
 
 
 # Global plotting parameters
-logy = true    # Set y-axis to logorithmic scale
+logy = false   # Set y-axis to logorithmic scale
 norm = false   # Normalize the histograms to unity
 legend = true  # Draw the legend
 
