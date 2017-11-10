@@ -113,9 +113,9 @@ for plot in params['plot']:
     if args.verbose:
         print("Creating plot {}".format(plot['name']))
 
-    # Create canvas and pads
-    c1 = root.TCanvas(
-        "c1" + plot['name'], "", params['canvas']['w'], params['canvas']['h']
+    # Create canvas
+    canv = root.TCanvas(
+        "canv_" + plot['name'], "", params['canvas']['w'], params['canvas']['h']
     )
 
     # List of histograms in plot
@@ -187,10 +187,10 @@ for plot in params['plot']:
     for hist in hists:
         hist.GetXaxis().SetLabelSize(0)
 
-    # Set histogram pad's y-axis to logorithmic scale
-    # TODO: y-axis lower limit cannot be 0
+    #
     if params['logy']:
-        print("Doing log y")
+        if args.verbose:
+            print("Set histogram y-axis to logorithmic scale")
         gPad.SetLogy()
 
     astyle.ATLASLabel(0.2, 0.86, "Preliminary")
@@ -200,13 +200,14 @@ for plot in params['plot']:
         legend = utils.MakeLegend(hists, xmin=0.8, ymin=0.65)
         legend.Draw()
 
-    # Build lower pad for ratio plots
-    c1.cd()  # Go back to the main canvas before defining pad2
+    # Go back to the main canvas before defining lower pad
+    canv.cd()
 
+    # Build lower pad for ratio plots
     ratio_pad = utils.MakePad("ratiopad", "", 0, 0, 1, 0.3)
     ratio_pad.SetTopMargin(0.01)
     ratio_pad.SetBottomMargin(0.35)
-    ratio_pad.SetGridy()  # // vertical gri
+    ratio_pad.SetGridy()  # horizontal grid
 
     ratio_pad.Draw()
     ratio_pad.cd()
@@ -229,7 +230,7 @@ for plot in params['plot']:
 
     gPad.RedrawAxis()
 
-    c1.Print("{}/{}_{}.{}".format(
+    canv.Print("{}/{}_{}.{}".format(
         outdir, params['title'], plot['name'], params['ext'])
     )
 
