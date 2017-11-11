@@ -55,4 +55,9 @@ setup(
     extras_require={
         'test': ['pytest', 'coverage'],
     },
+    entry_points={
+        'console_scripts': [
+            'slim-trees=atlasplots.slim_trees:main',
+        ],
+    },
 )

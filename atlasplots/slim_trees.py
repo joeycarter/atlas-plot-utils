@@ -17,20 +17,20 @@ Slim the tree ``tree`` in ``data.root`` and save to ``data.slim.root``:
 
 .. code:: bash
 
-    $ ./slim_trees.py tree -i data.root
+    $ slim-trees tree -i data.root
 
 Slim the tree ``tree`` in ``data.root`` and save to ``newdata.root``:
 
 .. code:: bash
 
-    $ ./slim_trees.py tree -i data.root -o newdata.root
+    $ slim-trees tree -i data.root -o newdata.root
 
 Slim the tree ``tree`` in ``data.root``, save to ``data.slim.root``, and only
 keep the first 100 events:
 
 .. code:: bash
 
-    $ ./slim_trees.py tree -i data.root -t 100
+    $ slim-trees tree -i data.root -t 100
 
 Note
 ----
