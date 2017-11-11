@@ -269,7 +269,7 @@ def FormatHistograms(hists, title="", xtitle="", ytitle="", units="",
             hist.GetXaxis().SetTitle(xtitle)
 
         if ytitle:
-            ytitle += " / {:.3f} {}".format(hist.GetXaxis().GetBinWidth(1), units)
+            ytitle += " / {:g} {}".format(hist.GetXaxis().GetBinWidth(1), units)
             hist.GetYaxis().SetTitle(ytitle)
 
         hist.GetYaxis().SetTitleOffset(1.0)
