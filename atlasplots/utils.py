@@ -26,7 +26,7 @@ def DrawText(x, y, text, color=1, size=0.05):
     y : float
         y position in NDC coordinates
     text : string, optional
-        Text displayed next to label (the default is None)
+        The text
     color : int, optional
         Text colour (the default is 1, i.e. black).
         See https://root.cern.ch/doc/master/classTColor.html.
@@ -102,7 +102,7 @@ def GetTTree(filename, treename):
 
 
 def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", label=""):
-    """Make histogram from a TTree
+    """Make histogram from a TTree.
 
     Parameters
     ----------
@@ -299,7 +299,7 @@ def DrawHistograms(hists, options=""):
 
 
 def NormalizeHistograms(hists, width=False):
-    """Normalize a list of histograms to unity
+    """Normalize a list of histograms to unity.
 
     Parameters
     ----------
@@ -471,9 +471,7 @@ def MakeLegend(hists, xmin=0.65, ymin=0.65):
 
 
 def DrawLine(x1, y1, x2, y2, color=1, width=1, style=1, alpha=1):
-    """Draw a horizontal line at y=1 on a histogram.
-
-    This is particularly useful for ratio plots.
+    """Draw a line on a histogram.
 
     See https://root.cern.ch/doc/master/classTAttLine.html for more information
     on line properties.
@@ -511,7 +509,9 @@ def DrawLine(x1, y1, x2, y2, color=1, width=1, style=1, alpha=1):
 
 
 def DrawLineAt1(hist, color=1, width=1, style=1, alpha=1):
-    """Draw a line on a histogram
+    """Draw a horizontal line at y=1 on a histogram.
+
+    This is particularly useful for ratio plots.
 
     See https://root.cern.ch/doc/master/classTAttLine.html for more information
     on line properties.
