@@ -3,7 +3,7 @@
 
 title = "ratio_plot"  # Title or description of plots being produced
 outdir = "./plots"    # Output directory (no trailing /)
-ext = "pdf"          # File extension, e.g. "pdf", "png", "jpg", etc.
+ext = "pdf"           # File extension, e.g. "pdf", "png", "jpg", etc.
 
 
 # Global plotting parameters
@@ -26,7 +26,7 @@ legend = true  # Draw the legend
     name = "mc15_13TeV.MCFMPythia8EvtGen_gg_ZZ_llll.root"  # Path to .root file
     tree = "tree_incl_all"                                 # Name of TTree object
     label = "MCFM"                                         # Label in legend
-    color = "#000000"                                      # Line color (black)
+    color = "#000000"                                      # Line color hex code
     scale = 4.2                                            # Scale factor
 
 # File 1: Numerator in ratio plot
@@ -34,7 +34,7 @@ legend = true  # Draw the legend
     name = "mc15_13TeV.Sherpa_CT10_ggllllNoHiggs.root"
     tree = "tree_incl_all"
     label = "Sherpa"
-    color = "#0052A5"  # blue
+    color = "#1F77B4"
 
 
 # Plot 0
@@ -55,7 +55,7 @@ legend = true  # Draw the legend
     label = "m_{4l} [GeV]"  # Include units in []
     cuts = "weight"
 
-# Plot 3
+# Plot 2
 [[plot]]
     name = "higgs_pt_fidDres_truth"
     nbins = 20

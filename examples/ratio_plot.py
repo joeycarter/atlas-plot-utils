@@ -60,7 +60,7 @@ def FormatRatioPlot(h, ymin, ymax, yLabel):
 
     # Set marker style and draw
     h.SetMarkerStyle(20)
-    h.Draw("same " + "ep")
+    h.Draw("same e")
 
     # Y axis ratio plot settings
     h.GetYaxis().SetTitle(yLabel)
@@ -181,7 +181,7 @@ for plot in params['plot']:
     hist_pad.Draw()
     hist_pad.cd()
 
-    utils.DrawHistograms(hists, "hist e")
+    utils.DrawHistograms(hists, "hist")
 
     # Remove x-axis labels
     for hist in hists:

@@ -113,7 +113,7 @@ def _fill_missing(params):
             file['label'] = file['name']
 
         if 'color' not in file:
-            file['color'] = "000000"  # black
+            file['color'] = "#000000"  # black
 
         if 'fill' not in file:
             file['fill'] = None
