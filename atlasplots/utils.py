@@ -232,8 +232,8 @@ def FormatHistograms(hists, title="", xtitle="", ytitle="", units="",
 
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
+    hists : [TH1]
+        List of histograms
     title : str, optional
         Histogram title; typically empty (the default is "")
     xtitle : str, optional
@@ -282,8 +282,8 @@ def DrawHistograms(hists, options=""):
 
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
+    hists : [TH1]
+        List of histograms
     options : str, optional
         Drawing options (the default is "")
     """
@@ -303,8 +303,8 @@ def NormalizeHistograms(hists, width=False):
 
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
+    hists : [TH1]
+        List of histograms
     width : bool, optional
         If true, the bin contents and errors are divided by the bin width
         (the default is False)
@@ -324,8 +324,8 @@ def GetMinimum(hists):
 
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
+    hists : [TH1]
+        List of histograms
 
     Returns
     -------
@@ -352,8 +352,8 @@ def GetMaximum(hists):
 
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
+    hists : [TH1]
+        List of histograms
 
     Returns
     -------
@@ -378,14 +378,17 @@ def GetMaximum(hists):
 def SetYRange(hists, max=None, min=0):
     """Set the y-axis range (max and min) on a list of histograms.
 
+    If the max value is not provided, it calls :py:func:`GetMaximum` to get the
+    maximum value from the list of histograms
+
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
-    max : {[type]}, optional
-        [description] (the default is None, which [default_description])
-    min : {number}, optional
-        [description] (the default is 0, which [default_description])
+    hists : [TH1]
+        List of histograms
+    max : float, optional
+        Max value (the default is None)
+    min : float, optional
+        Min value (the default is 0)
     """
     # If hists is a single value, convert to list
     if type(hists) is not list:
@@ -435,8 +438,8 @@ def MakeLegend(hists, xmin=0.65, ymin=0.65):
 
     Parameters
     ----------
-    hists : list
-        List of histograms (TH1)
+    hists : [TH1]
+        List of histograms
     xmin : float, optional
         The x position of the bottom left point of the legend
         (the default is 0.65)
