@@ -9,8 +9,9 @@ from __future__ import absolute_import, division, print_function
 
 import sys
 import datetime
-import crayons
 import re
+
+from .console import bcolor
 
 import ROOT as root
 from ROOT import gDirectory
@@ -64,19 +65,19 @@ def GetTTree(filename, treename):
     if filename.endswith(".root"):
         file = root.TFile.Open(filename)
         print("Reading in tree {} from {}... "
-              .format(crayons.white(treename, bold=True), filename), end="")
+              .format(bcolor.bold + treename + bcolor.end, filename), end="")
 
         if not file:
             # ROOT prints its own "file not found" message
-            print("{}".format(crayons.red("Failed")))
+            print("{}".format(bcolor.red + "Failed" + bcolor.end))
             sys.exit(1)
 
         tree = file.Get(treename)
 
         if not tree:
-            print("{}".format(crayons.red("Failed")))
-            print("{} Tree '{}' not found in {}"
-                  .format(crayons.yellow("Warning:"), treename, filename))
+            print("{}".format(bcolor.red + "Failed" + bcolor.end))
+            print("{}  Tree '{}' not found in {}"
+                  .format(bcolor.warning(), treename, filename))
 
             # Look into file to see what else is there
             items_in_file = file.GetListOfKeys()
@@ -88,7 +89,7 @@ def GetTTree(filename, treename):
 
             sys.exit(1)
 
-        print("{}".format(crayons.green("OK")))
+        print("{}".format(bcolor.ok()))
 
     else:
         # TODO: Exception handling
@@ -151,7 +152,7 @@ def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", label=""):
     hist.SetDirectory(0)
 
     if hist.GetEntries() == 0:
-        print("{} Histogram is empty!".format(crayons.yellow("Warning:")))
+        print("{}  Histogram is empty!".format(bcolor.warning()))
 
     if label:
         hist.label = label
@@ -467,8 +468,8 @@ def MakeLegend(hists, xmin=0.65, ymin=0.65):
             else:
                 legend.AddEntry(hist, hist.label, "l")
         else:
-            print("{} Making legend but histogram '{}' has no label"
-                  .format(crayons.yellow("Warning:"), hist.GetTitle()))
+            print("{}  Making legend but histogram '{}' has no label"
+                  .format(bcolor.warning(), hist.GetTitle()))
 
     return legend
 

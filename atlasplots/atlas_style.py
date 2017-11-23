@@ -46,7 +46,7 @@ For a collection of complete examples, see the :ref:`examples` section.
 
 from __future__ import absolute_import, division, print_function
 
-import crayons
+from .console import bcolor
 
 import ROOT as root
 from ROOT import gPad, gROOT
@@ -55,7 +55,7 @@ from ROOT import gPad, gROOT
 def SetAtlasStyle():
     """Applying ATLAS style settings globally.
     """
-    print("\n{}\n".format(crayons.green("Applying ATLAS style settings...")))
+    print("\n{}\n".format(bcolor.green + "Applying ATLAS style settings..." + bcolor.end))
 
     AtlasStyle()
     gROOT.SetStyle("ATLAS")

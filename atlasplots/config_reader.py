@@ -10,7 +10,8 @@ from __future__ import absolute_import, division, print_function
 
 import sys
 import toml
-import crayons
+
+from .console import bcolor
 
 
 def read(config_file):
@@ -92,10 +93,10 @@ def _print_missing(param, parent="Config file"):
     parent : str, optional
         "Parent" of the missing parameter (the default is "Config file")
     """
-    print("{} {} missing {} parameter".format(
-        crayons.red("Error:"),
-        crayons.white(parent, bold=True),
-        crayons.white(param, bold=True))
+    print("{}  {} missing {} parameter".format(
+        bcolor.error(),
+        bcolor.bold + parent + bcolor.end,
+        bcolor.bold + param + bcolor.end)
     )
 
 

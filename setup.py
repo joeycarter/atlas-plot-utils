@@ -51,7 +51,7 @@ setup(
     ],
     keywords='CERN ATLAS PyROOT plotting',
     packages=find_packages(exclude=['docs', 'tests']),
-    install_requires=['numpy', 'crayons', 'toml'],
+    install_requires=['numpy', 'toml'],
     extras_require={
         'test': ['pytest', 'coverage'],
     },

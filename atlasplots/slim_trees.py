@@ -47,9 +47,10 @@ unwanted branches. This is obviously not ideal.
 
 from __future__ import absolute_import, division, print_function
 
-import argparse
-import crayons
 import sys
+import argparse
+
+from .console import bcolor
 
 import ROOT as root
 
@@ -73,8 +74,8 @@ def main():
     elif args.input[len(args.input)-4:] == "root":
         outname = args.input[:len(args.input)-5] + '.slim.root'
     else:
-        print("{} Problem getting output file name. Exiting..."
-              .format(crayons.red("Error")))
+        print("{}  Problem getting output file name. Exiting..."
+              .format(bcolor.error()))
         sys.exit(1)
 
 
@@ -94,7 +95,7 @@ def main():
             br = line.rstrip()  # Strip newline character at end of line
             oldtree.SetBranchStatus(br, 1)
 
-    print("{}".format(crayons.green("OK")))
+    print("{}".format(bcolor.ok()))
 
     # Create a new file and a clone of old tree in new file
     newfile = root.TFile(outname, "RECREATE")
@@ -107,8 +108,8 @@ def main():
         # Check the number of entries
         nentry = oldtree.GetEntries()
         if nentry < args.trim:
-            print("{} Attempting to trim {} entries when {} only has {}"
-                  .format(crayons.yellow("Warning:"), args.trim, args.tree, nentry))
+            print("{}  Attempting to trim {} entries when {} only has {}"
+                  .format(bcolor.warning(), args.trim, args.tree, nentry))
             print("Inlcuding all entries in new tree")
             args.trim = nentry
 
