@@ -137,11 +137,14 @@ class bcolor:
     end = "\033[0m"
 
     # Pre-formatted strings
+    @staticmethod
     def ok():
         return bcolor.OK + "OK" + bcolor.end
 
+    @staticmethod
     def warning():
         return bcolor.WARNING + "Warning" + bcolor.end
 
+    @staticmethod
     def error():
         return bcolor.ERROR + "Error" + bcolor.end
