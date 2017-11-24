@@ -187,17 +187,22 @@ for plot in params['plot']:
     for hist in hists:
         hist.GetXaxis().SetLabelSize(0)
 
-    #
+    # Set logarithmic scale on y-axis
     if params['logy']:
         if args.verbose:
-            print("Set histogram y-axis to logorithmic scale")
+            print("Set histogram y-axis to logarithmic scale")
         gPad.SetLogy()
 
-    astyle.ATLASLabel(0.2, 0.86, "Preliminary")
-    utils.DrawText(0.7, 0.85, "H #rightarrow ZZ* #rightarrow 4l", 1, 0.05)
+    # Draw labels and legend on the canvas
+    astyle.ATLASLabel(0.2, 0.86, "Internal")
 
-    if params['legend']:
-        legend = utils.MakeLegend(hists, xmin=0.8, ymin=0.65)
+    for label in params['label']:
+        utils.DrawText(label['x'], label['y'], label['text'], 1, 0.05)
+
+    if 'legend' in params:
+        legend = utils.MakeLegend(
+            hists, xmin=params['legend']['x'], ymin=params['legend']['y']
+        )
         legend.Draw()
 
     # Go back to the main canvas before defining lower pad

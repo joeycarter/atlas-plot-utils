@@ -9,16 +9,25 @@ ext = "pdf"           # File extension, e.g. "pdf", "png", "jpg", etc.
 # Global plotting parameters
 logy = false   # Set y-axis to logorithmic scale
 norm = false   # Normalize the histograms to unity
-legend = true  # Draw the legend
 
 [author]
     name = "Joey Carter"           # Author name
     email = "joey.carter@cern.ch"  # Author e-mail
 
-
 [canvas]
     w = 800  # Canvas wdth; typically 800
     h = 800  # Canvas height; typically 600 or 800
+
+[legend]
+    x = 0.78  # Legend x position
+    y = 0.65  # Legend y position
+
+
+# A list of labels to draw on the canvas
+[[label]]
+    text = "H #rightarrow ZZ* #rightarrow 4l"
+    x = 0.7
+    y = 0.85
 
 
 # File 0: Denominator in ratio plot
