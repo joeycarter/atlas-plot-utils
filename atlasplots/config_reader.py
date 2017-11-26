@@ -8,6 +8,7 @@ format.
 
 from __future__ import absolute_import, division, print_function
 
+import collections
 import sys
 import toml
 
@@ -35,6 +36,10 @@ def read(config_file):
         config_file_str = file.read()
 
     params = toml.loads(config_file_str)
+
+    # If using Python 2, convert unicode keys and values to strings
+    if sys.version_info[0] == 2:
+        params = _convert_to_string(params)
 
     _check_required(params)
     _fill_missing(params)
@@ -121,3 +126,25 @@ def _fill_missing(params):
 
         if 'scale' not in file:
             file['scale'] = 1.0
+
+
+def _convert_to_string(data):
+    """Convert data in unicode format to string.
+
+    Parameters
+    ----------
+    data : {str, dict}
+        Data in unicode format
+    
+    Returns
+    -------
+        Data in string format
+    """
+    if isinstance(data, basestring):
+        return str(data)
+    elif isinstance(data, collections.Mapping):
+        return dict(map(_convert_to_string, data.iteritems()))
+    elif isinstance(data, collections.Iterable):
+        return type(data)(map(_convert_to_string, data))
+    else:
+        return data
