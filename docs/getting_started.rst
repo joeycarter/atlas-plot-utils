@@ -178,7 +178,13 @@ Now to use ``pip``, you can set the following alias:
 
 .. code-block:: bash
 
-    alias pip="python ~/.local/bin/pip --user"
+    $ alias pip="python ~/.local/bin/pip"
+
+Then to install a package,
+
+.. code-block:: bash
+
+    $ pip install <package> --user
 
 The ``--user`` flag tells ``pip`` to install packages to ``~/.local/lib/`` (which is necessary since you don't have ``sudo`` privileges on ``lxplus``).
 Finally, at long last, you can install **atlasplots**:
@@ -187,7 +193,7 @@ Finally, at long last, you can install **atlasplots**:
 
     $ git clone git@github.com:joeycarter/atlas-plots.git
     $ cd atlas-plots
-    $ pip install -e .
+    $ pip install -e . --user
 
 Basic Usage
 -----------

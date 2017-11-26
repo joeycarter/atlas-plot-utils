@@ -50,7 +50,7 @@ from __future__ import absolute_import, division, print_function
 import sys
 import argparse
 
-from .console import bcolor
+from atlasplots.console import bcolor
 
 import ROOT as root
 

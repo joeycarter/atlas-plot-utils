@@ -11,7 +11,7 @@ import sys
 import datetime
 import re
 
-from .console import bcolor
+from atlasplots.console import bcolor
 
 import ROOT as root
 from ROOT import gDirectory

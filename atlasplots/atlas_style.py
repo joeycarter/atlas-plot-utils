@@ -46,7 +46,7 @@ For a collection of complete examples, see the :ref:`examples` section.
 
 from __future__ import absolute_import, division, print_function
 
-from .console import bcolor
+from atlasplots.console import bcolor
 
 import ROOT as root
 from ROOT import gPad, gROOT

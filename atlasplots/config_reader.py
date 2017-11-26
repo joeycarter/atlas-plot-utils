@@ -12,7 +12,7 @@ import collections
 import sys
 import toml
 
-from .console import bcolor
+from atlasplots.console import bcolor
 
 
 def read(config_file):
