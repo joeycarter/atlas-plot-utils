@@ -15,7 +15,7 @@ Also have a look at the chapter on `Properly Installing Python <http://docs.pyth
 
 If you're using a Mac, you can install Python with `Homebrew <https://brew.sh/>`_:
 
-.. code:: bash
+.. code-block:: bash
 
     $ brew install python3
 
@@ -26,7 +26,7 @@ Homebrew also installs ``pip3`` for you, which is an alias pointing to ``pip`` i
     You may encounter issues with file permissions when installing software because Homebrew needs write access to ``/usr/local/``.
     Since ``brew install`` will not work with root privileges (unless ``brew`` itself is owned by root), you can change the ownership of the contents of ``/usr/local/``, or wherever Homebrew installs software, with,
 
-    .. code:: bash
+    .. code-block:: bash
 
         $ sudo chown -R $(whoami) $(brew --prefix)/*
 
@@ -38,7 +38,7 @@ Installing ROOT
 `ROOT <https://root.cern.ch/>`_ is a scientific software framework developed at CERN for data analysis in high energy physics.
 The easiest way to install ROOT if you're using a Mac is also with Homebrew:
 
-.. code:: bash
+.. code-block:: bash
 
     $ brew install root --with-python3 --without-python
 
@@ -101,7 +101,7 @@ To illustrate the power and simplicity of PyROOT, consider opening a ROOT file `
 
 As a complete example, suppose you want to print all the values in the ``eta`` branch:
 
-.. code:: python
+.. code-block:: python
 
     import ROOT
 
@@ -113,7 +113,7 @@ As a complete example, suppose you want to print all the values in the ``eta`` b
 
 Compare this to the equivalent C++ ROOT macro:
 
-.. code:: c++
+.. code-block:: c++
 
     {
         TFile* file = TFile::Open("data_file.root");
@@ -131,7 +131,7 @@ Installing atlasplots
 
 **atlasplots** isn't in PyPI (yet) so for now it's best to clone the source and install as editable:
 
-.. code:: bash
+.. code-block:: bash
 
     $ git clone git@github.com:joeycarter/atlas-plots.git
     $ cd atlas-plots
@@ -139,10 +139,55 @@ Installing atlasplots
 
 To uninstall:
 
-.. code:: bash
+.. code-block:: bash
 
     $ pip uninstall atlasplots
 
+Installing on lxplus
+--------------------
+
+.. note::
+
+    Fellow ATLAS members: follow these instructions to set up **atlasplots** on ``lxplus``.
+    Other CERN folk, you may have to fill in some of the gaps to set up the latest versions of ROOT and Python.
+
+If you're like me and want to use **atlasplots** on ``lxplus`` (to avoid copying over potentially large ROOT files to your local machine), there are a few extra steps involved to install it.
+As of writing these docs, the default version of ROOT installed on ``lxplus`` is 5.34/36 and the default version of Python is 2.6.6 (*sigh*...).
+First things first, let's get proper, recent releases of these two applications:
+
+.. code-block:: bash
+
+    $ setupATLAS
+    $ lsetup root
+
+.. note::
+
+    Careful here: setting up ROOT in this way might interfere with certain environment and ``PATH`` variables if you have an ``Athena`` release set up in your current shell.
+
+Now we have at least ROOT 6.10/04 and Python 2.7.13 (it's no Python 3, but it'll do).
+With this sparkling new software ready to go, you will likely run into an issue if you start trying to install packages with ``pip``: installing packages will normally work, but you can't import them.
+This is because while you can set up different versions of Python on ``lxplus``, there is only the default system ``pip`` available.
+To get around this, you can install the latest version of ``pip`` yourself:
+
+.. code-block:: bash
+
+    $ wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py --user
+
+This installs ``pip`` to ``~/.local/bin/`` (you can get rid of ``get-pip.py`` afterwards).
+Now to use ``pip``, you can set the following alias:
+
+.. code-block:: bash
+
+    alias pip="python ~/.local/bin/pip --user"
+
+The ``--user`` flag tells ``pip`` to install packages to ``~/.local/lib/`` (which is necessary since you don't have ``sudo`` privileges on ``lxplus``).
+Finally, at long last, you can install **atlasplots**:
+
+.. code-block:: bash
+
+    $ git clone git@github.com:joeycarter/atlas-plots.git
+    $ cd atlas-plots
+    $ pip install -e .
 
 Basic Usage
 -----------

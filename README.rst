@@ -23,6 +23,12 @@ To uninstall:
 
     $ pip uninstall atlasplots
 
+Installing on lxplus
+--------------------
+
+Installing **atlasplots** is a bit more involved if you want to use it on ``lxplus``.
+Full installation instructions can be found `here <https://atlas-plots.readthedocs.io/en/latest/getting_started.html#installing-on-lxplus>`_ .
+
 Documentation
 -------------
 
