@@ -434,8 +434,17 @@ def MakePad(name, title, xlow, ylow, xup, yup):
     return pad
 
 
-def MakeLegend(hists, xmin=0.65, ymin=0.65):
+def MakeLegend(hists, xmin=0.65, ymin=0.65, options="LF"):
     """Draw the legend.
+
+    Legend drawing options are:
+
+    * L: draw line associated with hists' lines
+    * P: draw polymarker associated with hists' marker
+    * F: draw a box with fill associated with hists' fill
+    * E: draw vertical error bar if option "L" is also specified
+
+    See https://root.cern.ch/doc/master/classTLegend.html for full details.
 
     Parameters
     ----------
@@ -447,6 +456,9 @@ def MakeLegend(hists, xmin=0.65, ymin=0.65):
     ymin : float, optional
         The y position of the bottom left point of the legend
         (the default is 0.65)
+    options : string, optional
+        Pass these options to TLegend::AddEntry().
+        Default is "LF"
     """
     # If hists is a single value, convert to list
     if type(hists) is not list:
@@ -463,11 +475,9 @@ def MakeLegend(hists, xmin=0.65, ymin=0.65):
 
     for hist in hists:
         if hasattr(hist, 'label'):
-            if hist.GetMarkerStyle() > 0:
-                legend.AddEntry(hist, hist.label, "pl")
-            else:
-                legend.AddEntry(hist, hist.label, "l")
+            legend.AddEntry(hist, hist.label, options)
         else:
+            legend.AddEntry(hist)
             print("{}  Making legend but histogram '{}' has no label"
                   .format(bcolor.warning(), hist.GetTitle()))
 
