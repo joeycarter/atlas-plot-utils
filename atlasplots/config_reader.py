@@ -4,6 +4,53 @@ Config File Reader
 
 The config files are written in the `TOML <https://github.com/toml-lang/toml>`_
 format.
+
+Colormaps
+---------
+
+I'm a big fan of `matplotlib's colourmaps
+<https://matplotlib.org/users/colormaps.html>`_, and I often use the 'tab10'
+qualitative colourmap when plotting multiple datasets on the same axes.
+Colours in the config files are specified using hex codes, so I've summarized
+tab10's hex codes in the table below.
+
++---------+-----------+
+| Colour  | Hex Code  |
++=========+===========+
+| Blue    | #1F77B4   |
++---------+-----------+
+| Orange  | #FF7F0E   |
++---------+-----------+
+| Green   | #2CA02C   |
++---------+-----------+
+| Red     | #D62728   |
++---------+-----------+
+| Purple  | #9467BD   |
++---------+-----------+
+| Brown   | #8C564B   |
++---------+-----------+
+| Pink    | #E377C2   |
++---------+-----------+
+| Grey    | #7F7F7F   |
++---------+-----------+
+| Olive   | #BCBD22   |
++---------+-----------+
+| Cyan    | #17BECF   |
++---------+-----------+
+
+You can also look up these hex codes and many others directly from matplotlib:
+
+>>> import matplotlib
+>>> cmap = matplotlib.colors.get_named_colors_mapping()
+>>> cmap['tab:blue']
+'#1f77b4'
+>>> cmap['tab:orange']
+'#ff7f0e'
+
+and so on.
+
+.. image:: https://matplotlib.org/users/plotting/colormaps/grayscale_01_04.png
+    :alt: <matplotlib qualitative colormaps>
 """
 
 from __future__ import absolute_import, division, print_function
