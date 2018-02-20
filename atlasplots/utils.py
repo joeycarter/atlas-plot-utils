@@ -260,10 +260,12 @@ def FormatHistograms(hists, title="", xtitle="", ytitle="", xtitle_offset=None,
 
     # Try to parse units from xtitle
     if not units and xtitle:
-        regex = r".*(\[.*\])"
-        try:
-            units = re.match(regex, xtitle).group(1)
-        except AttributeError:
+        pattern = re.compile(r".*\[(.*)\]")
+        match = pattern.search(xtitle)
+
+        if match:
+            units = match.group(1)
+        else:
             units = ""
 
     for hist in hists:
