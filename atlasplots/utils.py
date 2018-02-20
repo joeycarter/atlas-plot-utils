@@ -221,8 +221,8 @@ def SetHistogramFill(hist, color=None, style=None, alpha=1):
         hist.SetFillColorAlpha(color, alpha)
 
 
-def FormatHistograms(hists, title="", xtitle="", ytitle="", units="",
-                     max=None, min=0):
+def FormatHistograms(hists, title="", xtitle="", ytitle="", xtitle_offset=None,
+                     ytitle_offset=None, units="", max=None, min=0):
     """Format histograms and add axis labels.
 
     Typically the y-axis label contains the bin width with units, for example,
@@ -241,6 +241,10 @@ def FormatHistograms(hists, title="", xtitle="", ytitle="", units="",
         x-axis label (the default is "")
     ytitle : str, optional
         y-axis label (the default is "")
+    xtitle_offset : float, optional
+        Label offset from x-axis (the default is None, i.e. use ROOT's default)
+    ytitle_offset : float, optional
+        Label offset from y-axis (the default is None, i.e. use ROOT's default)
     units : str, optional
         Units (the default is "")
     max : float, optional
@@ -273,7 +277,11 @@ def FormatHistograms(hists, title="", xtitle="", ytitle="", units="",
             ytitle += " / {:g} {}".format(hist.GetXaxis().GetBinWidth(1), units)
             hist.GetYaxis().SetTitle(ytitle)
 
-        hist.GetYaxis().SetTitleOffset(1.0)
+        if xtitle_offset:
+            hist.GetXaxis().SetTitleOffset(xtitle_offset)
+
+        if ytitle_offset:
+            hist.GetXaxis().SetTitleOffset(ytitle_offset)
 
 
 def DrawHistograms(hists, options=""):
