@@ -102,6 +102,32 @@ def GetTTree(filename, treename):
     return file, tree
 
 
+def GetTChain(filenames, treename):
+    """Get TChain (list of Root files containing the same tree)
+
+    Parameters
+    ----------
+    filenames : [str]
+        Name(s) of ROOT file(s)
+    treename : str
+        Name of TTree
+
+    Returns
+    -------
+    TTree or TChain
+        The TTree or TChain
+    """
+    if type(filenames) is not list:
+        filenames = [filenames]
+
+    chain = root.TChain(treename)
+
+    for file in filenames:
+        chain.Add(file)
+
+    return chain
+
+
 def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", label=""):
     """Make histogram from a TTree.
 
