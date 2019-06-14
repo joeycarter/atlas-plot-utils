@@ -128,7 +128,7 @@ def GetTChain(filenames, treename):
     return chain
 
 
-def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", label=""):
+def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", shift="", label=""):
     """Make histogram from a TTree.
 
     Parameters
@@ -147,6 +147,9 @@ def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", label=""):
         Apply selections.
         See ``TTree::Draw()`` at https://root.cern.ch/doc/master/classTTree.html
         for more information
+    shift : str, optional
+        Shift histogram by this amount; subtacts this value from the variable
+        being plotted
     label : str, optional
         The histogram's label; i.e. the entry that will appear in the legend
 
@@ -171,6 +174,9 @@ def MakeHistogram(tree, plotname, nbins, xmin, xmax, selections="", label=""):
     histname = histname.replace(".", "")
 
     indices = "({},{},{})".format(nbins, xmin, xmax)
+
+    if shift:
+        plotname += "-{}".format(shift)
 
     tree.Draw(plotname + ">>" + histname + indices, selections, "e")
 
@@ -286,7 +292,7 @@ def FormatHistograms(hists, title="", xtitle="", ytitle="", xtitle_offset=None,
 
     # Try to parse units from xtitle
     if not units and xtitle:
-        pattern = re.compile(r".*\[(.*)\]")
+        pattern = re.compile(r".*\[(.*\w.*)\]\s*$")
         match = pattern.search(xtitle)
 
         if match:
