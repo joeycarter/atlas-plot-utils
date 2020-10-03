@@ -10,7 +10,7 @@ A collection of utility functions and style settings for making pretty plots wit
 
 | :warning: ATLAS Plot Utils (formerly *ATLAS Plots*) is now mostly deprecated! :warning:
 |
-| Check out my new project, `ATLAS Plots <https://github.com/joeycarter/atlas-plots>`_, which uses `matplotlib <https://matplotlib.org/)`_-like syntax and idioms to produce plots in ROOT following the standard ATLAS style guidelines.
+| Check out my new project, `ATLAS Plots <https://github.com/joeycarter/atlas-plots>`_, which uses `matplotlib <https://matplotlib.org/>)`_-like syntax and idioms to produce plots in ROOT following the standard ATLAS style guidelines.
 
 ----
 
