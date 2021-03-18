@@ -68,8 +68,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'atlas-plots'
-copyright = '2017 Joey Carter'
+project = 'atlas-plot-utils'
+copyright = '2017-2021 Joey Carter'
 author = 'Joey Carter'
 
 # The version info for the project you're documenting, acts as replacement for

@@ -3,13 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to atlasplots!
-=======================
+Welcome to atlas-plot-utils!
+============================
 
-**atlasplots** is a suite of utility functions and style settings for making pretty plots with `PyROOT <https://root.cern.ch/pyroot>`_ for the `ATLAS Experiment <https://atlas.cern/>`_ at `CERN <https://home.cern/>`_.
+.. warning::
+   ATLAS Plot Utils (formerly *ATLAS Plots*) is now mostly deprecated!
+
+   Check out my new project, `ATLAS Plots <https://github.com/joeycarter/atlas-plots>`_, which uses `matplotlib <https://matplotlib.org/>`_-like syntax and idioms to produce plots in ROOT following the standard ATLAS style guidelines.
+
+----
+
+**ATLAS Plot Utils** is a suite of utility functions and style settings for making pretty plots with `PyROOT <https://root.cern.ch/pyroot>`_ for the `ATLAS Experiment <https://atlas.cern/>`_ at `CERN <https://home.cern/>`_.
 
 Writing code to produce high energy physics plots in classic C++ ROOT is notoriously cumbersome and slow.
-PyROOT and **atlasplots** help make things a little easier.
+PyROOT and **atlas-plot-utils** help make things a little easier.
 
 .. toctree::
    :maxdepth: 2
